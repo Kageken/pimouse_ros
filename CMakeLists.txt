@@ -10,6 +10,7 @@ project(pimouse_ros)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
+  std_srvs
   message_generation
   actionlib_msgs
 )
