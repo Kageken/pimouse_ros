@@ -25,13 +25,13 @@ class BuzzerTest(unittest.TestCase):
 			data = f.readline()
 			self.assertEqual(data,"1234\n","value does not written to rtbuzzer0")
 
-	def test_music(self)
+	def test_music(self):
 		goal = MusicGoal()
-		goal.freq = [100, 200, 300, 0]
+		goal.freqs = [100, 200, 300, 0]
 		goal.durations = [2, 2, 2, 2]
 
 		self.client.wait_for_server()
-		self.client.send_goal(goal,feedback_cb)
+		self.client.send_goal(goal,feedback_cb=self.feedback_cb)
 		self.client.wait_for_result()
 
 		self.assertTrue(self.client.get_result(),"invalid result")
