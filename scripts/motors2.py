@@ -57,7 +57,7 @@ class Motor():
         d = TriggerResponse()
         d.success = self.set_power(onoff)
         d.message = "ON" if self.is_on else "OFF"
-        return
+        return d
 
     def callback_on(self,message):
         return self.onoff_response(True)
