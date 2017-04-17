@@ -5,10 +5,10 @@ import rosnode, rospy
 import time
 from pimouse_ros.msg import MotorFreqs
 from geometry_msgs.msg import Twist
-from std_srvs.srv import Trigger, TriggerResponse
+from std_srvs.srv import Trigger, TriggerResponse  #追加
 
 class MotorTest(unittest.TestCase):
-    def setUp(self):
+    def setUp(self):                               #このメソッドを追加
         rospy.wait_for_service('/motor_on')
         rospy.wait_for_service('/motor_off')
         on = rospy.ServiceProxy('/motor_on', Trigger)
@@ -50,7 +50,7 @@ class MotorTest(unittest.TestCase):
         self.file_check("rtmotor_raw_r0",0,"don't stop after 1[s]")
         self.file_check("rtmotor_raw_l0",0,"don't stop after 1[s]")
 
-    def test_on_off(self):
+    def test_on_off(self):                         #このメソッドも追加
         off = rospy.ServiceProxy('/motor_off', Trigger)
         ret = off()
         self.assertEqual(ret.success, True, "motor off does not succeeded")
